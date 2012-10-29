@@ -201,7 +201,7 @@ public class DiscourseAnalysisTextToXML {
 
         for (int i = 1; i < (lineArray.length); i++) {
             /*if (CONJUNCTIONS.contains(stringCleaner(lineArray[i].replace("'\"\' [],.\n)-", "").toUpperCase()))) {
-                lineArray[i] = "<pconj>" + lineArray[i] + "</pconj>";
+            lineArray[i] = "<pconj>" + lineArray[i] + "</pconj>";
             }*/
 
             if (lineArray[i].length() > 1 && lineArray[i].charAt(0) == '-' && Character.isDigit(lineArray[i].charAt(0))) {
@@ -437,6 +437,9 @@ public class DiscourseAnalysisTextToXML {
             String ver = "0";
             xmlText = xmlText + ("<?xml version=\"1.0\" ?>\n\n");
             xmlText = xmlText + ("<book bookName=\"" + title + "\">\n");
+            for (int i = 0; i < CONJUNCTIONS.size(); i++) {
+                xmlText = xmlText + "<pconj>" + CONJUNCTIONS.get(i) + "</pconj>\n";
+            }
             xmlText = xmlText + ("\t<clause>\n");
             int lineCount = 0;
 
@@ -640,21 +643,21 @@ public class DiscourseAnalysisTextToXML {
     public static void main(String[] args) {
         try {
             DiscourseAnalysisTextToXML x = new DiscourseAnalysisTextToXML();
-            
+
             x.uploadConjunctions("/home/tyler/", "CONJUNCTIONS.txt");
             if (x.conjunctionsUploadSuccessful()) {
                 System.out.println("Successful Upload Conjunctions");
             } else {
                 System.out.println("Failed to Upload Conjunctions");
             }
-            
+
             x.uploadText("/home/tyler/", "Luke 1.txt");
             if (x.textUploadSuccessful()) {
                 System.out.println("Successful Upload Text");
             } else {
                 System.out.println("Failed to Upload Text");
             }
-            
+
             x.parse("Luke 1");
             ArrayList<String> errors = x.getErrors();
             if (errors.size() > 0) {
