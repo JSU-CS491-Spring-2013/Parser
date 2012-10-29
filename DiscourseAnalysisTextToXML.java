@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-// package cs491texttoxml;
+package cs491texttoxml;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -597,79 +597,78 @@ public class DiscourseAnalysisTextToXML {
 
     /**
      * @param args the command line arguments
-     * /
+     */
     public static void main(String[] args) {
+        DiscourseAnalysisTextToXML x = new DiscourseAnalysisTextToXML();
+
+
+        x.uploadConjunctions(args[0], "");
+        if (x.conjunctionsUploadSuccessful()) {
+            System.out.println("0");
+        } else {
+            System.out.println("1");
+        }
+
+
+        x.uploadText(args[1], "");
+        if (x.textUploadSuccessful()) {
+            System.out.println("0");
+        } else {
+            System.out.println("1");
+        }
+        String temp3 = args[2].replace("|", " ");
+        x.parse(temp3);
+
+        ArrayList<String> errors = x.getErrors();
+        String textErrors = "";
+
+        if (errors.size() > 0) {
+            System.out.println("1");
+        } else {
+            System.out.println("0");
+        }
+
+        if (errors.size() > 0) {
+
+            for (int i = 0; i < errors.size(); i++) {
+                System.out.println(errors.get(i));
+            }
+
+        } else {
+            System.out.print(x.getXML());
+            x.toFile("F:/xampp/htdocs/CS491/Web Application/DiscourseAnalysis/ParsedXMLFiles/", temp3 + ".xml");
+        }
+    }
+    /*public static void main(String[] args) {
+    try {
     DiscourseAnalysisTextToXML x = new DiscourseAnalysisTextToXML();
     
-    
-    x.uploadConjunctions(args[0], "");
+    x.uploadConjunctions("/home/tyler/", "CONJUNCTIONS.txt");
     if (x.conjunctionsUploadSuccessful()) {
-    System.out.println("0");
+    System.out.println("Successful Upload Conjunctions");
     } else {
-    System.out.println("1");
+    System.out.println("Failed to Upload Conjunctions");
     }
     
-    
-    x.uploadText(args[1], "");
+    x.uploadText("/home/tyler/", "Luke 1.txt");
     if (x.textUploadSuccessful()) {
-    System.out.println("0");
+    System.out.println("Successful Upload Text");
     } else {
-    System.out.println("1");
+    System.out.println("Failed to Upload Text");
     }
-    String temp3 = args[2].replace("|", " ");
-    x.parse(temp3);
     
+    x.parse("Luke 1");
     ArrayList<String> errors = x.getErrors();
-    String textErrors = "";
-    
     if (errors.size() > 0) {
-    System.out.println("1");
-    } else {
-    System.out.println("0");
-    }
-    
-    if (errors.size() > 0) {
-    
     for (int i = 0; i < errors.size(); i++) {
     System.out.println(errors.get(i));
     }
-    
+    System.out.println("XML file not created.");
     } else {
-    System.out.print(x.getXML());
-    x.toFile("F:/xampp/htdocs/CS491/Web Application/DiscourseAnalysis/ParsedXMLFiles/", temp3 + ".xml");
+    System.out.println("Successful Parse");
+    x.toFile("/home/tyler/Desktop/", "output.xml");
     }
+    } catch (Exception e) {
     }
-     */
-    public static void main(String[] args) {
-        try {
-            DiscourseAnalysisTextToXML x = new DiscourseAnalysisTextToXML();
-
-            x.uploadConjunctions("/home/tyler/", "CONJUNCTIONS.txt");
-            if (x.conjunctionsUploadSuccessful()) {
-                System.out.println("Successful Upload Conjunctions");
-            } else {
-                System.out.println("Failed to Upload Conjunctions");
-            }
-
-            x.uploadText("/home/tyler/", "Luke 1.txt");
-            if (x.textUploadSuccessful()) {
-                System.out.println("Successful Upload Text");
-            } else {
-                System.out.println("Failed to Upload Text");
-            }
-
-            x.parse("Luke 1");
-            ArrayList<String> errors = x.getErrors();
-            if (errors.size() > 0) {
-                for (int i = 0; i < errors.size(); i++) {
-                    System.out.println(errors.get(i));
-                }
-                System.out.println("XML file not created.");
-            } else {
-                System.out.println("Successful Parse");
-                x.toFile("/home/tyler/Desktop/", "output.xml");
-            }
-        } catch (Exception e) {
-        }
-    }
+    }*/
 }
