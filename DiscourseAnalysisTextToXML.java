@@ -191,8 +191,8 @@ public class DiscourseAnalysisTextToXML {
 
                 }
                 if (tempArray.contains(stringCleaner(con.toUpperCase()))) {
-                    lineArray[i] = "<pconj>" + lineArray[i];
-                    lineArray[i + (longestConjunction - 1)] = lineArray[i + (longestConjunction - 1)] + "</pconj>";
+                    // lineArray[i] = "<pconj>" + lineArray[i];
+                    lineArray[i + (longestConjunction - 1)] = lineArray[i + (longestConjunction - 1)];
 
                 }
             }
@@ -200,9 +200,9 @@ public class DiscourseAnalysisTextToXML {
         }
 
         for (int i = 1; i < (lineArray.length); i++) {
-            if (CONJUNCTIONS.contains(stringCleaner(lineArray[i].replace("'\"\' [],.\n)-", "").toUpperCase()))) {
+            /*if (CONJUNCTIONS.contains(stringCleaner(lineArray[i].replace("'\"\' [],.\n)-", "").toUpperCase()))) {
                 lineArray[i] = "<pconj>" + lineArray[i] + "</pconj>";
-            }
+            }*/
 
             if (lineArray[i].length() > 1 && lineArray[i].charAt(0) == '-' && Character.isDigit(lineArray[i].charAt(0))) {
                 successfulParse = false;
