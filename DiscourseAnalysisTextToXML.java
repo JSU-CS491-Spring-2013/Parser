@@ -2,8 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package cs491texttoxml;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -598,7 +596,7 @@ public class DiscourseAnalysisTextToXML {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         DiscourseAnalysisTextToXML x = new DiscourseAnalysisTextToXML();
 
 
@@ -638,19 +636,19 @@ public class DiscourseAnalysisTextToXML {
             System.out.print(x.getXML());
             x.toFile("F:/xampp/htdocs/CS491/Web Application/DiscourseAnalysis/ParsedXMLFiles/", temp3 + ".xml");
         }
-    }
-    /*public static void main(String[] args) {
+    }*/
+    public static void main(String[] args) {
     try {
     DiscourseAnalysisTextToXML x = new DiscourseAnalysisTextToXML();
     
-    x.uploadConjunctions("/home/tyler/", "CONJUNCTIONS.txt");
+    x.uploadConjunctions("/Users/john1/Desktop/", "CONJUNCTIONS.txt");
     if (x.conjunctionsUploadSuccessful()) {
     System.out.println("Successful Upload Conjunctions");
     } else {
     System.out.println("Failed to Upload Conjunctions");
     }
     
-    x.uploadText("/home/tyler/", "Luke 1.txt");
+    x.uploadText("/Users/john1/Desktop/", "Test.txt");
     if (x.textUploadSuccessful()) {
     System.out.println("Successful Upload Text");
     } else {
@@ -666,9 +664,9 @@ public class DiscourseAnalysisTextToXML {
     System.out.println("XML file not created.");
     } else {
     System.out.println("Successful Parse");
-    x.toFile("/home/tyler/Desktop/", "output.xml");
+    x.toFile("/Users/john1/Desktop/", "output.xml");
     }
     } catch (Exception e) {
     }
-    }*/
+    }
 }
